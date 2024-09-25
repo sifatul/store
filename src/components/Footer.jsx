@@ -11,7 +11,7 @@ function Footer() {
             <div className='footer'>
 
                 <div className='footer-list list-1'>
-                    <h2  className="logo">Foodie.</h2>
+                    <h2  className="logo">Rezoans Gadget.</h2>
                     <p>Financial experts support or help you to to find out which way you can raise your funds more.</p>
                     <div className='icons'>
                         <h2><FaFacebookSquare /></h2>

@@ -22,7 +22,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route
-                path="/"
+                path="/store/"
                 element={
                   <Layout>
                     <Pages />

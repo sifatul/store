@@ -1,4 +1,5 @@
 import { avatar1, avatar2, avatar3, blog1, blog2, blog3, burger1, burger2, burger3, burger4, burger5, burger6, burger7, drink1, drink2, drink3, drink4, picon1, picon2, picon4, picon5, pizza1, pizza2, pizza3, promo1, promo2, promo3, promo4, promo5, sandwich1, sandwich2 } from "../assets";
+import headPhone from "/headphone.jpeg"
 
 export const navLinks = [
     {
@@ -64,11 +65,12 @@ export const food =[
     {
         id:0,
         Name: "Burger",
-        pic : burger1,
+        pic : headPhone,
         catagory : "Burger",
-        Price : 60,
+        Price : 0,
+        subTitle : '1 year warranty',
         discount : 10,
-        O_price: 80,
+        O_price: 0,
         clicked: false
     },
     {
@@ -79,7 +81,8 @@ export const food =[
         Price : 60,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:2,
@@ -89,7 +92,8 @@ export const food =[
         Price : 50,
         discount : 20,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:3,
@@ -99,7 +103,8 @@ export const food =[
         Price : 25,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:4,
@@ -109,7 +114,8 @@ export const food =[
         Price : 50,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:5,
@@ -119,7 +125,8 @@ export const food =[
         Price : 60,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:6,
@@ -129,7 +136,8 @@ export const food =[
         Price : 30,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:7,
@@ -139,7 +147,8 @@ export const food =[
         Price : 60,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:8,
@@ -149,7 +158,8 @@ export const food =[
         Price : 60,
         discount : 10,
         O_price: 80,
-        clicked: false
+        clicked: false,
+        subTitle : '1 year warranty',
     },
     {
         id:9,

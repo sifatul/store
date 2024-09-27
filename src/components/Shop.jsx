@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { atom, useRecoilState , selector } from 'recoil';
 import { food } from '../constants';
 import './Styles/shop.css';
-import { BsFillCartPlusFill, BsCartCheckFill } from 'react-icons/bs'
+import { BsFillCartPlusFill, BsWhatsapp,BsCartCheckFill } from 'react-icons/bs'
 import Transition from '../components/Transition';
 import { useEffect, useState } from 'react';
 
@@ -104,8 +104,12 @@ function Shop() {
                 <img className="item-pic" src={item.pic} alt="burger" />
             </div>
             <div className='item-info'>
+                
                 <h2 className='name'>{item.Name}</h2>
-                <p className='price'>{item.Price}$ <span className='original-price'>{item.O_price}$</span></p>
+                <p className='original-price'>
+                {item.subTitle}
+                    {/* <span className='original-price'>{item.O_price}$</span> */}
+                    </p>
                 <button className='cart-button'
                     onClick={() => {
                         addToCart(item, cart, setCart);
@@ -117,7 +121,10 @@ function Shop() {
                         </>
                     ) : (
                         <>
-                            Add to Cart <BsFillCartPlusFill />
+                            Order Now 
+                            <span className='cart-button-icon'>
+                                <BsWhatsapp />
+                            </span>
                         </>
                     )}
                 </button>

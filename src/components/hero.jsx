@@ -25,7 +25,7 @@ function Hero() {
                 <button className='button'>Order Now</button>
             </div>
             <div  className='burger' style={burgerstyle}>
-                <img  src={PowerBank} width={550} />
+                <img  src={burger6} width={550} />
             </div>
         </div>
     )

@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { navLinks } from '../constants';
 import { Link } from 'react-router-dom';
-import {  useRecoilValue } from 'recoil';
-import { CartState } from './Shop';
+
 import { carticon } from '../assets';
 import { FaTimes } from 'react-icons/fa';
 import './Styles/Navbar.css'
 import './Styles/Cart.css'
-import Cart from './Cart';
 
 
 const Navbar = () => {
-    const cart = useRecoilValue(CartState)
     const [isOpen, setIsOpen] = useState(false);
     const [isSidebarOpen, setSidebarOpen] = useState(false); 
 
@@ -44,7 +41,7 @@ const Navbar = () => {
                         <button onClick={toggleSidebar} className='cart-btn'>
                             <div className='cart'>
                                 <img src={carticon} alt="" width="30px" />
-                                <p className='cart-value'>{Object.keys(cart).length}</p>
+                                {/* <p className='cart-value'>{Object.keys(cart).length}</p> */}
                             </div>
                         </button>
                         <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar hide-sidebar'}`}>
@@ -54,7 +51,6 @@ const Navbar = () => {
                                     <FaTimes />
                                 </button>
                             </div>
-                            <Cart />
                         </aside>
                     </div>
                 </div>

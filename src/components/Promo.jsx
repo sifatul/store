@@ -1,5 +1,5 @@
 import React from 'react'
-import { catagory } from '../constants'
+import { category } from '../constants'
 import './Styles/Promo.css'
 function Promo() {
 
@@ -8,7 +8,7 @@ function Promo() {
             <div className="promo-container">
                 <h1 className='promo_heading'>We have</h1>
                 <ul className="list">
-                    {catagory.map((promo,index)=>(
+                    {category.map((promo,index)=>(
                         <li key={promo.id} className='item'>
                             <div className="promo-card">
                                 <img className="promo-icon" src={promo.icon}/>

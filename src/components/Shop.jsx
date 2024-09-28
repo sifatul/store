@@ -1,181 +1,128 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { atom, useRecoilState , selector } from 'recoil';
-import { food } from '../constants';
+import { atom, useRecoilState, selector } from 'recoil';
+import { food, category } from '../constants';
 import './Styles/shop.css';
-import { BsFillCartPlusFill, BsWhatsapp,BsCartCheckFill } from 'react-icons/bs'
+import { BsFillCartPlusFill, BsWhatsapp, BsCartCheckFill } from 'react-icons/bs';
 import Transition from '../components/Transition';
 import { useEffect, useState } from 'react';
 
-export const CartState = atom({
-    key: "CartState",
-    default : {},
-})
+ 
 
-export const cartStateWithRemove = selector({
-    key: 'cartStateWithRemove',
-    get: ({ get }) => get(CartState),
-    set: ({ set }, updatedCart) => {
-    set(CartState, updatedCart);
-    },
-});
-
-export function addToCart(item, cart, setCart) {
-    if (cart[item.id]) {
-        const updatedCart = { ...cart };
-        const itemCount = updatedCart[item.id];
-        
-        if (itemCount > 1) {
-            updatedCart[item.id] = itemCount - 1;
-        } else {
-            delete updatedCart[item.id]; 
-        }
-        
-        setCart(updatedCart);
-    } else {
-        const updatedCart = { ...cart, [item.id]: 1 };
-        setCart(updatedCart);
-    }
-}
-
-
-
+ 
 function Shop() {
-    const [cart , setCart] = useRecoilState(CartState);
-    const [visible, setVisible] = React.useState(8);
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [items, setItems] = React.useState([]);
-    // console.log(Object.keys(cart).length);
-    var cartLength = 0;
-    for (var key in cart) {
-        cartLength++;
-    }
-    console.log(cartLength);
+   
+  const [visible, setVisible] = React.useState(8);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [items, setItems] = React.useState([]);
+ 
 
-    if(!cart) {
-        console.log("Cart is undefined")
-    }
+  React.useEffect(() => {
+    setItems(food);
+    window.scrollTo(0, 0);
+  }, []);
 
-    React.useEffect(() => {
-        setItems(food);
-        window.scrollTo(0,0);
-    }, []);
+  const [showTransition, setShowTransition] = useState(true);
 
-    const [showTransition, setShowTransition] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-
-        const timeout = setTimeout(() => {
-        setShowTransition(false);
-        }, 3000);
-        return () => {
-        clearTimeout(timeout);
-        };
-    }, []);
-
-    const typeFilter = searchParams.get('catagory');
-    const displayedItems = typeFilter ? items.filter((items) => items.catagory === typeFilter) : items;
-
-    const showMoreItems = () => {
-        setVisible(prevState => prevState + 4);
+    const timeout = setTimeout(() => {
+      setShowTransition(false);
+    }, 3000);
+    return () => {
+      clearTimeout(timeout);
     };
+  }, []);
 
+  const typeFilter = searchParams.get('category');
+  const displayedItems = useMemo(()=>{
+      if(!typeFilter) return items;
+    
+      const output =  items.filter(items => items.category === typeFilter)
+      console.log("category",typeFilter, output )
+      return output
+  },[typeFilter, items])
+  
+  
 
-    const toggleClicked = (item) => {
-        setItems((prevItems) =>
-            prevItems.map((prevItem) =>
-                prevItem.id === item.id ? { ...prevItem, clicked: !prevItem.clicked } : prevItem
-            )
-        );
-    };
+  const showMoreItems = () => {
+    setVisible(prevState => prevState + 4);
+  };
 
-    const remainingItems = displayedItems.length - visible;
-    const showMoreButton = remainingItems > 0 && (
-        <div className='shop-button'>
-            <button className='button' onClick={showMoreItems}>Explore More</button>
-        </div>
-    );
+  const toggleClicked = item => {
+    setItems(prevItems => prevItems.map(prevItem => (prevItem.id === item.id ? { ...prevItem, clicked: !prevItem.clicked } : prevItem)));
+  };
 
-    const ItemsElements = displayedItems.slice(0, visible).map((item) => (
-        <div className='item-card' key={item.id}>
-            <div className='item-discount angle'>-{item.discount}%</div>
-            <div className='item-pic'>
-                <img className="item-pic" src={item.pic} alt="burger" />
-            </div>
-            <div className='item-info'>
-                
-                <h2 className='name'>{item.Name}</h2>
-                <p className='original-price'>
-                {item.subTitle}
-                    {/* <span className='original-price'>{item.O_price}$</span> */}
-                    </p>
-                <button className='cart-button'
-                    onClick={() => {
-                        addToCart(item, cart, setCart);
-                        toggleClicked(item);
-                    }}
-                    >{item.clicked ? (
-                        <>
-                            Added to Cart <BsCartCheckFill />
-                        </>
-                    ) : (
-                        <>
-                            Order Now 
-                            <span className='cart-button-icon'>
-                                <BsWhatsapp />
-                            </span>
-                        </>
-                    )}
-                </button>
-            </div>
-        </div>
-    ));
+  const remainingItems = displayedItems.length - visible;
+  const showMoreButton = remainingItems > 0 && (
+    <div className="shop-button">
+      <button className="button" onClick={showMoreItems}>
+        Explore More
+      </button>
+    </div>
+  );
 
-    return (
-        <div className='shop-container'>
-                {showTransition && <Transition />}
-            <h1>Explore Our Items</h1>
+  const ItemsElements = displayedItems.slice(0, visible).map(item => (
+    <div className="item-card" key={item.id}>
+      <div className="item-discount angle">-{item.discount}%</div>
+      <div className="item-pic">
+        <img className="item-pic" src={item.pic} alt="burger" />
+      </div>
+      <div className="item-info">
+        <h2 className="name">{item.Name}</h2>
+        <p className="original-price">
+          {item.subTitle}
+          {/* <span className='original-price'>{item.O_price}$</span> */}
+        </p>
+        <button
+          className="cart-button"
+          onClick={() => {
+            toggleClicked(item);
+          }}
+        >
+          {item.clicked ? (
+            <>
+              Added to Cart <BsCartCheckFill />
+            </>
+          ) : (
+            <>
+              Order Now
+              <span className="cart-button-icon">
+                <BsWhatsapp />
+              </span>
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  ));
+  console.log("displayedItems",displayedItems)
 
-            <nav className='filter-nav'>
-                <Link className='item-type' to='.'>All</Link>
+  return (
+    <div className="shop-container">
+      {showTransition && <Transition />}
+      <h1>Explore Our Items</h1>
 
-                <Link
-                    className={`item-type pizza ${typeFilter === 'Pizza' ? 'selected' : ''}`}
-                    to='?catagory=Pizza'
-                >
-                    Pizza
-                </Link>
+      <nav className="filter-nav">
+        <Link className="item-type" to=".">
+          All
+        </Link>
+        {category.map(cat => (
+          <Link
+            key={cat.title} // Adding a key for optimization in React's reconciliation process
+            className={`item-type ${cat.title} ${typeFilter === cat.title ? 'selected' : ''}`}
+            to={`?category=${encodeURIComponent(cat.title)}`} // Dynamically set the category in the URL
+          >
+            {cat.title}
+          </Link>
+        ))} 
+      </nav>
 
-                <Link
-                    className={`item-type pizza ${typeFilter === 'Drink' ? 'selected' : ''}`}
-                    to='?catagory=Drink'
-                >
-                    Drink
-                </Link>
-
-                <Link
-                    className={`item-type burger ${typeFilter === 'Burger' ? 'selected' : ''}`}
-                    to='?catagory=Burger'
-                >
-                    Burger
-                </Link>
-
-                <Link
-                    className={`item-type sandwich ${typeFilter === 'Sandwich' ? 'selected' : ''}`}
-                    to='?catagory=Sandwich'
-                >
-                    Sandwich
-                </Link>
-
-            </nav>
-
-            <div className='item-container'>
-                {ItemsElements}
-            </div>
-            {showMoreButton}
-        </div>
-    );
+      <div className="item-container">{ItemsElements}</div>
+      {showMoreButton}
+    </div>
+  );
 }
 
 export default Shop;

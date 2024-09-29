@@ -22,6 +22,16 @@ import OraimoNecklaceLite from "/products/Oraimo Necklace Lite.jpg";
 import OraimoNecklaceProNeckband from "/products/Oraimo Necklace Pro Neckband.png";
 import OraimoWatchLite from "/products/Oraimo Watch Lite.jpg";
 import OraimoWrapPortableSpeaker from "/products/Oraimo Wrap Portable Speaker.jpg";
+import OraimoBoomPortableWirelessSpeaker from "/products/Oraimo Boom Portable Wireless Speaker.jpg";
+import OraimoBoompop2ENC from "/products/Oraimo Boompop 2 ENC.jpg";
+import OraimoSliceLinkPro from "/products/Oraimo Slice Link Pro.jpg";
+import OraimoSliceLink from "/products/Oraimo Slice Link.jpg";
+import OraimoToast15Flash from "/products/Oraimo Toast 15 Flash.jpg";
+import OraimoTraveler15Flash from "/products/Oraimo Traveler 15 Flash.jpg";
+import OraimoTraveler22_5PD from "/products/Oraimo Traveler 22.5 PD.jpg";
+import OraimoTraveler3Lit from "/products/Oraimo Traveler 3 Lit.jpg";
+import Toast10Flash from "/products/Toast 10 Flash.jpg";
+
 
 
 export const navLinks = [
@@ -69,6 +79,14 @@ export const category =[
         description: "Its is all about Meat",
         img: promo3
     },
+    {
+        id: 4,
+        title: "Power Bank",
+        icon: picon5,
+        description: "Its is all about Meat",
+        img: promo3
+    },
+
 
 ]
 
@@ -343,7 +361,7 @@ export const food = [
     },
     {
         id: 22,
-        Name: "Wrap Portable Speaker",
+        Name: "Wrap Portable",
         pic: OraimoWrapPortableSpeaker,
         category: "Speaker",
         Price: 30,
@@ -352,8 +370,117 @@ export const food = [
         O_price: 35,
         clicked: false,
         brand: "Oraimo"
+    },
+    {
+        id: 23,
+        Name: "Boom Portable",
+        pic: OraimoBoomPortableWirelessSpeaker,
+        category: "Speaker",
+        Price: 50,
+        subTitle: "1 year warranty",
+        discount: 5,
+        O_price: 55,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 24,
+        Name: "Boompop 2 ENC",
+        pic: OraimoBoompop2ENC,
+        category: "Earbuds",
+        Price: 60,
+        subTitle: "1 year warranty",
+        discount: 8,
+        O_price: 65,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 25,
+        Name: "Slice Link Pro",
+        pic: OraimoSliceLinkPro,
+        category: "Power Bank",
+        Price: 40,
+        subTitle: "1 year warranty",
+        discount: 5,
+        O_price: 45,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 26,
+        Name: "Slice Link",
+        pic: OraimoSliceLink,
+        category: "Power Bank",
+        Price: 35,
+        subTitle: "1 year warranty",
+        discount: 10,
+        O_price: 40,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 27,
+        Name: "Toast 15 Flash",
+        pic: OraimoToast15Flash,
+        category: "Power Bank",
+        Price: 45,
+        subTitle: "2 years warranty",
+        discount: 10,
+        O_price: 50,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 28,
+        Name: "Traveler 15 Flash",
+        pic: OraimoTraveler15Flash,
+        category: "Power Bank",
+        Price: 55,
+        subTitle: "2 years warranty",
+        discount: 5,
+        O_price: 60,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 29,
+        Name: "Traveler 22.5 PD",
+        pic: OraimoTraveler22_5PD,
+        category: "Power Bank",
+        Price: 65,
+        subTitle: "2 years warranty",
+        discount: 8,
+        O_price: 70,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 30,
+        Name: "Traveler 3 Lit",
+        pic: OraimoTraveler3Lit,
+        category: "Power Bank",
+        Price: 25,
+        subTitle: "1 year warranty",
+        discount: 5,
+        O_price: 30,
+        clicked: false,
+        brand: "Oraimo"
+    },
+    {
+        id: 31,
+        Name: "Toast 10 Flash",
+        pic: Toast10Flash,
+        category: "Power Bank",
+        Price: 35,
+        subTitle: "1 year warranty",
+        discount: 7,
+        O_price: 40,
+        clicked: false,
+        brand: "Oraimo"
     }
 ];
+
 
 
 export const people = [

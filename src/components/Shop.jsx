@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
  
 function Shop() {
    
-  const [visible, setVisible] = React.useState(8);
+  const [visible, setVisible] = React.useState(20);
   const [searchParams, setSearchParams] = useSearchParams();
   const [items, setItems] = React.useState([]);
  
@@ -47,7 +47,7 @@ function Shop() {
   
 
   const showMoreItems = () => {
-    setVisible(prevState => prevState + 4);
+    setVisible(prevState => prevState + 10);
   };
 
   const toggleClicked = item => {
